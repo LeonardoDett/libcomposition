@@ -9,17 +9,25 @@ export interface InputLabelProps {
 
 const inputLabelVariants = tv({
     base: [
-        "px-1 bg-white transition-all duration-200 bg-white z-2",
+        "px-1 transition-all duration-200 z-2 bg-white",
         "pointer-events-none"
     ],
     variants: {
+        isFocus: {
+            true: "",
+            false: ""
+        },
         isActive: {
             true: "",
             false: ""
         },
         isError: {
-            true: "text-red-500",
-            false: "text-gray-500"
+            true: "text-error", // prioridade absoluta
+            false: ""
+        },
+        accent: {
+            primary: "",
+            secondary: ""
         },
         floating: {
             true: "absolute left-3 top-3.5 text-md",
@@ -27,6 +35,27 @@ const inputLabelVariants = tv({
         }
     },
     compoundVariants: [
+        // Quando focado e sem erro → usa accent
+        {
+            isFocus: true,
+            isError: false,
+            accent: "primary",
+            class: "text-primary"
+        },
+        {
+            isFocus: true,
+            isError: false,
+            accent: "secondary",
+            class: "text-secondary"
+        },
+
+        // Quando não está focado e sem erro → cinza
+        {
+            isFocus: false,
+            isError: false,
+            class: "text-gray-500"
+        },
+
         {
             isActive: true,
             floating: true,
@@ -38,9 +67,10 @@ const inputLabelVariants = tv({
 export function InputLabel({ children, floating }: InputLabelProps) {
 
     const {
-        states: { isError, isActive },
+        states: { isError, isActive, isFocus },
         actions: { handleRegisterLabelFloating },
-        refs: { labelRef }
+        refs: { labelRef },
+        theme: { accentColor }
     } = useInputContext();
 
     useEffect(() => {
@@ -48,7 +78,7 @@ export function InputLabel({ children, floating }: InputLabelProps) {
     }, [floating, handleRegisterLabelFloating])
 
     return (
-        <label ref={labelRef} className={inputLabelVariants({ isActive, isError, floating })}>
+        <label ref={labelRef} className={inputLabelVariants({ isActive, isError, floating, isFocus, accent: accentColor })}>
             {children}
         </label>
     )

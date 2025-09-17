@@ -1,1 +1,15 @@
 @import "tailwindcss";
+@theme {
+
+--color-primary: var(--color-blue-500);
+--color-secondary: var(--color-purple-500);
+--color-error: var(--color-red-500);
+
+--color-background: #000000;
+
+
+--color-success: #000000;
+--color-info: #000000;
+--color-warning: #000000;
+
+}

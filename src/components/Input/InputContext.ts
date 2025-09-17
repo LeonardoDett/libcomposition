@@ -18,6 +18,9 @@ export interface InputContextProps {
     refs: {
         inputRef: RefObject<HTMLInputElement | null>;
         labelRef: RefObject<HTMLLabelElement | null>;
+    },
+    theme: {
+        accentColor: "primary" | "secondary" | undefined
     }
 }
 

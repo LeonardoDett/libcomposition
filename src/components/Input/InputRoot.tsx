@@ -5,9 +5,10 @@ export interface InputRootProps {
     children: ReactNode
     error: boolean
     disabled: boolean
+    accentColor: "primary" | "secondary" | undefined
 }
 
-export function InputRoot({ children, error, disabled }: InputRootProps) {
+export function InputRoot({ children, error, disabled, accentColor }: InputRootProps) {
     const [isActive, setIsActive] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
     const [isDisabled, setIsDisabled] = useState(disabled);
@@ -67,6 +68,9 @@ export function InputRoot({ children, error, disabled }: InputRootProps) {
         refs: {
             inputRef,
             labelRef
+        },
+        theme: {
+            accentColor
         }
     }
 

@@ -7,8 +7,8 @@ function App() {
     <>
       <div className='w-screen h-screen flex justify-center align-center items-center flex-1'>
         <div className='w-1/4'>
-          <Input.Root error={false} disabled={true}>
-            <Input.Label floating={true}>Label</Input.Label>
+          <Input.Root error={false} disabled={false} accentColor='primary'>
+            <Input.Label floating={false}>Label</Input.Label>
             <Input.Box>
               <Input.Field placeholder='tesasdasasasdasdasdte' />
             </Input.Box>
