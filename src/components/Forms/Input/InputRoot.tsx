@@ -18,6 +18,8 @@ export function InputRoot({ children, error, disabled, accentColor }: InputRootP
 
     const inputRef = useRef<HTMLInputElement | null>(null);
     const labelRef = useRef<HTMLLabelElement | null>(null);
+    const boxRef = useRef<HTMLDivElement | null>(null);
+
 
     const handleActive = (value: boolean) => setIsActive(value);
     const handleRegisterLabelFloating = (value: boolean) => setIsLabelFloating(value);
@@ -67,7 +69,8 @@ export function InputRoot({ children, error, disabled, accentColor }: InputRootP
         },
         refs: {
             inputRef,
-            labelRef
+            labelRef,
+            boxRef
         },
         theme: {
             accentColor

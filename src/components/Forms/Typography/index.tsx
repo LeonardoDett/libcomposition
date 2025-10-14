@@ -1,3 +1,4 @@
+import type { ElementType, ReactNode } from "react";
 import { tv } from "tailwind-variants";
 
 const typographyStyles = tv({
@@ -47,14 +48,16 @@ const typographyStyles = tv({
 })
 
 interface TypographyProps {
-  text: string
+  children: ReactNode
+  component?: ElementType
   size?: keyof typeof typographyStyles.variants.size
   color?: keyof typeof typographyStyles.variants.color
   weight?: keyof typeof typographyStyles.variants.weight
+  className?: string
 }
 
-export function Typography({ text, size, color, weight }: TypographyProps) {
+export function Typography({ children, size, color, weight, component: Component = "p", className }: TypographyProps) {
   return (
-    <div className={typographyStyles({ size, color, weight })}>{text}</div>
+    <Component className={typographyStyles({ size, color, weight, class: className })}>{children}</Component>
   );
 }

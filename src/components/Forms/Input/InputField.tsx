@@ -22,10 +22,11 @@ export function InputField({
     } = useInputContext();
 
     let placeholderText = "";
-    if ((isLabelFloating && isFocus) || !isLabelFloating) {
-        placeholderText = placeholder + "";
+    if (placeholder) {
+        if ((isLabelFloating && isFocus) || !isLabelFloating) {
+            placeholderText = placeholder + "";
+        }
     }
-
 
     return (
         <input

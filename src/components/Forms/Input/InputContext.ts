@@ -17,6 +17,7 @@ export interface InputContextProps {
     },
     refs: {
         inputRef: RefObject<HTMLInputElement | null>;
+        boxRef: RefObject<HTMLDivElement | null>;
         labelRef: RefObject<HTMLLabelElement | null>;
     },
     theme: {
