@@ -51,6 +51,19 @@ export function InputRoot({ children, error = false, disabled = false, accentCol
         }
     };
 
+    const handleChange = (value: string) => {
+        if (inputRef.current) {
+            inputRef.current.value = value;
+            setIsActive(true);
+            setHasContent(true);
+        }
+    };
+    const handleClear = () => {
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
+    };
+
 
     const data: InputContextProps = {
         states: {
@@ -65,7 +78,9 @@ export function InputRoot({ children, error = false, disabled = false, accentCol
             handleActive,
             handleFocus,
             handleBlur,
-            handleRegisterLabelFloating
+            handleRegisterLabelFloating,
+            handleChange,
+            handleClear
         },
         refs: {
             inputRef,

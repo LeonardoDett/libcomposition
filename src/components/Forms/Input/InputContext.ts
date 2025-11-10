@@ -14,6 +14,8 @@ export interface InputContextProps {
         handleFocus: (state: boolean) => void;
         handleBlur: () => void;
         handleRegisterLabelFloating: (state: boolean) => void;
+        handleChange: (event: string) => void;
+        handleClear: () => void;
     },
     refs: {
         inputRef: RefObject<HTMLInputElement | null>;

@@ -10,7 +10,7 @@ interface PopperBodyProps {
 }
 
 const PopperContentVariants = tv({
-  base: 'z-10 rounded-sm shadow-md bg-white p-2 absolute block overflow-scroll',
+  base: 'z-10 rounded-sm shadow-md bg-white absolute block overflow-scroll',
   variants: {
     orientation: {
       top: "left-1/2 -translate-x-1/2 -translate-y-full",
@@ -38,7 +38,7 @@ export function PopperContent({
     states
   } = usePopperContext();
 
-  const styles: React.CSSProperties = { width: width ?? "fit-content" };
+  const styles: React.CSSProperties = { width: width ?? "max-content" };
 
   const offset = 10;
 
