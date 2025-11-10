@@ -4,12 +4,12 @@ import { useInputContext } from "./InputContext";
 
 export interface InputLabelProps {
     children: ReactNode,
-    floating: boolean
+    floating?: boolean
 }
 
 const inputLabelVariants = tv({
     base: [
-        "px-1 transition-all duration-200 z-2 bg-white",
+        "px-1 transition-all duration-200 z-2 bg-transparent text-primary",
         "pointer-events-none"
     ],
     variants: {
@@ -22,7 +22,7 @@ const inputLabelVariants = tv({
             false: ""
         },
         isError: {
-            true: "text-error", // prioridade absoluta
+            true: "text-error",
             false: ""
         },
         accent: {
@@ -30,12 +30,11 @@ const inputLabelVariants = tv({
             secondary: ""
         },
         floating: {
-            true: "absolute left-3 top-3.5 text-md",
+            true: "absolute left-3 top-3.5 text-md bg-background",
             false: "block"
         }
     },
     compoundVariants: [
-        // Quando focado e sem erro → usa accent
         {
             isFocus: true,
             isError: false,
@@ -48,8 +47,6 @@ const inputLabelVariants = tv({
             accent: "secondary",
             class: "text-secondary"
         },
-
-        // Quando não está focado e sem erro → cinza
         {
             isFocus: false,
             isError: false,
@@ -64,7 +61,7 @@ const inputLabelVariants = tv({
     ]
 });
 
-export function InputLabel({ children, floating }: InputLabelProps) {
+export function InputLabel({ children, floating = false }: InputLabelProps) {
 
     const {
         states: { isError, isActive, isFocus },

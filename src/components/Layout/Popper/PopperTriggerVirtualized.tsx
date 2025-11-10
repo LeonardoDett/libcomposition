@@ -21,11 +21,11 @@ export function PopperTriggerVirtualized({
         }
     }, [isOpen, events]);
 
-
-    refs.setAnchor(virtualRef.current);
+    useEffect(() => {
+        refs.setAnchor(virtualRef.current);
+    }, [virtualRef, refs, isOpen]);
 
     return(
-        <>
-        </>
+        <></>
     )
 }

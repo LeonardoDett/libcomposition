@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @theme {
 
+--color-background: white;
+--color-text-primary: var(--color-gray-700);
+--color-text-secondary: var(--color-gray-500);
+
 --color-primary: var(--color-blue-500);
 --color-primary-900: var(--color-blue-900);
 --color-primary-800: var(--color-blue-800);
@@ -40,7 +44,6 @@
 --color-error-50: var(--color-red-50);
 
 
---color-background: #000000;
 
 --color-info: #000000;
 --color-warning: #000000;
@@ -57,4 +60,89 @@
 --color-success-100: var(--color-green-100);
 --color-success-50: var(--color-green-50);
 
+--animate-indeterminate: indeterminate 2.1s linear infinite;
+--animate-indeterminate-short: indeterminate-short 2.1s linear infinite;
+--animate-buffer: buffer 3s infinite linear;
+--animate-circular-rotate: circular-rotate 1.4s linear infinite;
+--animate-circular-dash: circular-dash 1.4s ease-in-out infinite;
+
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+@keyframes buffer {
+  0% {
+    opacity: 1;
+    background-position: 0 0;
+  }
+  100% {
+    opacity: 1;
+    background-position: -20px 0;
+  }
+}
+
+@keyframes circular-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circular-dash {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0px;
+  }
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+}
+
+@keyframes stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+}
+
+.bg-stripes {
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2) 75%, transparent 75%, transparent);
+  background-size: 40px 40px;
+}
+
+.animate-stripes {
+  animation: stripes 2s linear infinite;
 }

@@ -1,14 +1,13 @@
 import { tv } from 'tailwind-variants';
 import { Icon } from '../../Layout/Icon';
 import { LoaderCircle } from 'lucide-react';
-import type { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 
-export interface ButtonProps {
+export interface ButtonProps extends ComponentProps<'button'> {
     children: ReactNode,
     variant?: keyof typeof ButtonVariants.variants.variant
     color?: keyof typeof ButtonVariants.variants.color
-    disabled?: boolean
     loading?: boolean
     size?: keyof typeof ButtonVariants.variants.size
 }
@@ -18,21 +17,21 @@ export const ButtonVariants = tv({
         "inline-flex items-center justify-center",
         "font-medium rounded-lg transition duration-100 ease-in-out",
         "disabled:opacity-50 disabled:cursor-not-allowed",
-        "focus:outline-none" ,
+        "focus:outline-none",
         "cursor-pointer",
         "active:scale-95"
     ],
     variants: {
         color: {
-            primary: "text-white bg-primary hover:bg-primary-700 focus:ring-primary-400",
-            secondary: "text-white bg-secondary hover:bg-secondary-700 focus:ring-secondary-400",
-            success: "text-white bg-success-600 hover:bg-success-700 focus:ring-success-400",
-            cancel: "text-white bg-error hover:bg-error-700 focus:ring-error-400",
-            warning: "text-white bg-warning-500 hover:bg-warning-600 focus:ring-warning-300",
-            info: "text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-400",
+            primary: "",
+            secondary: "",
+            success: "",
+            cancel: "",
+            warning: "",
+            info: "",
         },
         variant: {
-            fill: "", // já definido pelas cores
+            fill: "text-white",
             outline: "bg-transparent border",
             text: "bg-transparent"
         },
@@ -51,6 +50,44 @@ export const ButtonVariants = tv({
         }
     },
     compoundVariants: [
+        // Fill + cores
+        {
+            variant: "fill",
+            color: "primary",
+            disabled: false,
+            class: "bg-primary hover:bg-primary-700 focus:ring-primary-400"
+        },
+        {
+            variant: "fill",
+            color: "secondary",
+            disabled: false,
+            class: "bg-secondary hover:bg-secondary-700 focus:ring-secondary-400"
+        },
+        {
+            variant: "fill",
+            color: "success",
+            disabled: false,
+            class: "bg-success-600 hover:bg-success-700 focus:ring-success-400"
+        },
+        {
+            variant: "fill",
+            color: "cancel",
+            disabled: false,
+            class: "bg-error hover:bg-error-700 focus:ring-error-400"
+        },
+        {
+            variant: "fill",
+            color: "warning",
+            disabled: false,
+            class: "bg-warning-500 hover:bg-warning-600 focus:ring-warning-300"
+        },
+        {
+            variant: "fill",
+            color: "info",
+            disabled: false,
+            class: "bg-cyan-600 hover:bg-cyan-700 focus:ring-cyan-400"
+        },
+
         // Outline + cores
         {
             variant: "outline",
@@ -144,15 +181,24 @@ export const ButtonVariants = tv({
     }
 });
 
-export function Button({ children, variant = "fill", loading = false, disabled = false, size = "md", color = "primary" }: ButtonProps) {
+export function Button({
+    children,
+    variant = "fill",
+    loading = false,
+    disabled = false,
+    size = "md",
+    color = "primary",
+    ...rest
+}: ButtonProps) {
 
     if (loading) {
         disabled = true;
     }
     return (
-        
+
         <button
-         className={ButtonVariants({ variant, loading, disabled, size, color })}>
+            {...rest}
+            className={ButtonVariants({ variant, loading, disabled, size, color })}>
             {loading && (
                 <Icon component={LoaderCircle} size={20} className="animate-spin absolute" />
             )}

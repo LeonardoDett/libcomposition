@@ -4,15 +4,17 @@
 
 - [X] Input
 - [] Select
-- [] Multi Select
+<!-- - [] Multi Select -->
 - [] Date Picker
 - [] Time Picker
 - [X] Button
+- [] Icon Button
+- [] Dropdown
 - [X] Typography
 - [] Checkbox
 - [] Radio Button
 - [] Switch button
-- []
+- [] Badge
 
 ### Layout
 
@@ -20,19 +22,20 @@
 - [] Tabs
 - [X] Divider
 - [] Modal
-- [] Drawer
-- [] Accordion
+- [X] Drawer
+- [X] Accordion
 - [X] Icon
 - [] Container
 
 ### Fedback
 
-- [] Tooltip
-- [] Toast
-- [] Alerts
-- [] Progress bar
+- [X] Tooltip
+<!-- - [] Toast -->
+- [X] Alert
+- [X] Progress bar
+- [X] Dialog
 
 ### utils
 
-- [] Popper
-- [] backdrop
+- [X] Popper
+- [X] backdrop

@@ -65,7 +65,7 @@ export function InputSelect({
                 disabled={isDisabled}
                 className={InputSelectVariants()}
             />
-            <Popper.Content>
+            <Popper.Content maxHeight='200px' >
                 {
                     options.map((option, index) => {
                         return (

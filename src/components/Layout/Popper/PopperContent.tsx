@@ -6,10 +6,11 @@ import { AnimatePresence, motion } from "motion/react";
 interface PopperBodyProps {
   children: ReactNode;
   width?: string;
+  maxHeight?: string;
 }
 
 const PopperContentVariants = tv({
-  base: 'z-10 rounded-sm shadow-md bg-white p-2 absolute block',
+  base: 'z-10 rounded-sm shadow-md bg-white p-2 absolute block overflow-scroll',
   variants: {
     orientation: {
       top: "left-1/2 -translate-x-1/2 -translate-y-full",
@@ -26,7 +27,8 @@ const PopperContentVariants = tv({
 
 export function PopperContent({
   children,
-  width
+  width,
+  maxHeight
 }: PopperBodyProps) {
 
   const {
@@ -63,6 +65,10 @@ export function PopperContent({
     }
   }
 
+  if (maxHeight) {
+    styles.maxHeight = `${maxHeight}`;
+  }
+
 
   return (
     <>
@@ -77,7 +83,7 @@ export function PopperContent({
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{
                     duration: 0.3,
-                    scale: { type: "spring", visualDuration: 0.3, bounce: 0.3  },
+                    scale: { type: "spring", visualDuration: 0.3, bounce: 0.3 },
                   }}
                   key="box"
                   ref={refs.setContent}

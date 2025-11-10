@@ -3,12 +3,12 @@ import { InputContext, type InputContextProps } from "./InputContext"
 
 export interface InputRootProps {
     children: ReactNode
-    error: boolean
-    disabled: boolean
-    accentColor: "primary" | "secondary" | undefined
+    error?: boolean
+    disabled?: boolean
+    accentColor?: "primary" | "secondary" | undefined
 }
 
-export function InputRoot({ children, error, disabled, accentColor }: InputRootProps) {
+export function InputRoot({ children, error = false, disabled = false, accentColor = "primary" }: InputRootProps) {
     const [isActive, setIsActive] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
     const [isDisabled, setIsDisabled] = useState(disabled);
