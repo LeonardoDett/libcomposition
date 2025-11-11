@@ -4,9 +4,9 @@ interface PopperContextType {
     states:{
       fitAnchor: boolean
       orientation: 'top' | 'bottom' | 'left' | 'right';
+      isOpen: boolean;
     }
     events: {
-        isOpen: boolean;
         handleOpen: () => void;
         handleClose: () => void;
         handleToggle: () => void;

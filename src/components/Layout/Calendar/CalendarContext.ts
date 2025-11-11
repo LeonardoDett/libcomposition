@@ -1,6 +1,14 @@
 import { createContext, useContext } from "react";
 import { useCalendarGrid } from "./useCalendarGrid";
 
+export type CalendarEvent = {
+  date: Date;
+  color: "red" | "green" | "blue",
+  title?: string;
+  description?: string;
+  [key: string]: any; // Allow for additional properties
+};
+
 export type CalendarContextProps = ReturnType<typeof useCalendarGrid>;
 
 export const CalendarContext = createContext<CalendarContextProps | undefined>(

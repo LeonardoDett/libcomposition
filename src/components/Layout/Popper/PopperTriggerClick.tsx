@@ -1,13 +1,17 @@
 import { Children, isValidElement, ReactElement, Ref } from "react";
 import { usePopperContext } from "./PopperContext";
 
-interface PopperTriggerClickProps {
+interface PopperTriggerClickProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactElement & { ref?: Ref<HTMLElement> };
+  className?: string;
+
 }
 
 
 export function PopperTriggerClick({
   children,
+  className,
+  ...rest
 }: PopperTriggerClickProps) {
 
   const { events, refs } = usePopperContext();
@@ -18,7 +22,7 @@ export function PopperTriggerClick({
   }
 
   return (
-    <div ref={refs.setAnchor} onClick={events.handleToggle}>
+    <div ref={refs.setAnchor} onClick={events.handleToggle} className={`cursor-pointer relative ${className}`} {...rest}>
       {children}
     </div>
   )

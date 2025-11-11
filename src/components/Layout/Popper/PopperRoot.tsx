@@ -53,10 +53,10 @@ export function PopperRoot({
   const data = {
     states: {
       fitAnchor,
-      orientation
+      orientation,
+      isOpen
     },
     events: {
-      isOpen,
       handleOpen,
       handleClose,
       handleToggle,
@@ -75,7 +75,7 @@ export function PopperRoot({
 
   return (
     <PopperContext.Provider value={{ ...data }}>
-      <div className="relative">
+      <div className="relative h-full">
         {children}
       </div>
     </PopperContext.Provider>

@@ -16,18 +16,21 @@ import {
   Locale,
 } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { CalendarEvent } from "./CalendarContext";
 
 export type UseCalendarGridProps = {
   currentDate?: Date;
   selectedDate?: Date | null;
-  onDateSelect?: (date: Date) => void;
+  onDateSelect?: (date: Date, events: CalendarEvent[]) => void;
   locale?: Locale;
+  events?: CalendarEvent[];
 };
 
 const getWeeks = (
   date: Date,
   locale: Locale,
-  selectedDate?: Date | null
+  selectedDate?: Date | null,
+  events: CalendarEvent[] = []
 ) => {
   const start = startOfWeek(startOfMonth(date), { locale });
   const end = endOfWeek(endOfMonth(date), { locale });
@@ -47,6 +50,7 @@ const getWeeks = (
       isCurrentMonth: isSameMonth(date, day),
       isToday: isToday(day),
       isSelected: selectedDate ? isSameDay(selectedDate, day) : false,
+      events: events.filter((event) => isSameDay(event.date, day)),
     }));
   });
 };
@@ -56,6 +60,7 @@ export const useCalendarGrid = ({
   selectedDate: initialSelected,
   onDateSelect,
   locale = ptBR,
+  events = [],
 }: UseCalendarGridProps) => {
   const [currentDate, setCurrentDate] = useState(initialSelected ?? initialDate);
   const [selectedDate, setSelectedDate] = useState<Date | null>(
@@ -68,8 +73,8 @@ export const useCalendarGrid = ({
   );
 
   const weeks = useMemo(
-    () => getWeeks(currentDate, locale, selectedDate),
-    [currentDate, locale, selectedDate]
+    () => getWeeks(currentDate, locale, selectedDate, events),
+    [currentDate, locale, selectedDate, events]
   );
 
   const weekDays = useMemo(() => {
@@ -83,7 +88,8 @@ export const useCalendarGrid = ({
   const handleDateSelect = (date: Date) => {
     setSelectedDate(date);
     if (onDateSelect) {
-      onDateSelect(date);
+      const dayEvents = events.filter((event: CalendarEvent) => isSameDay(event.date, date));
+      onDateSelect(date, dayEvents);
     }
   };
 
@@ -105,6 +111,7 @@ export const useCalendarGrid = ({
     selectedDate,
     currentDate,
     setDate: setCurrentDate,
+    events,
   };
 };
 

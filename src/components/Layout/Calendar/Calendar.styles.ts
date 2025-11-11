@@ -2,13 +2,13 @@ import { tv } from "tailwind-variants";
 
 export const calendarStyles = tv({
   slots: {
-    root: "bg-white rounded-lg shadow-lg p-4 w-full ",
-    header: "flex items-center justify-between mb-4",
+    root: "bg-white rounded-lg p-4 w-full relative",
+    header: "flex items-center justify-between mb-4 relative",
     title: "text-lg font-semibold",
-    navigationButton: "p-2 rounded-full hover:bg-gray-100 cursor-pointer",
-    body: "grid grid-cols-7 gap-1",
-    weekDay: "w-8 h-8 flex items-center justify-center font-semibold text-sm",
-    day: "w-8 h-8 flex place-items-center place-content-center rounded-full cursor-pointer hover:bg-gray-100 transition-colors",
+    navigationButton: "p-2 rounded-full hover:bg-gray-100 cursor-pointer relative",
+    body: "grid grid-cols-7 gap-1 relative",
+    weekDay: "w-8 h-8 flex items-center justify-center font-semibold text-sm relative",
+    day: "w-8 h-8 flex place-items-center place-content-center rounded-full cursor-pointer hover:bg-gray-100 transition-colors relative",
   },
   variants: {
     isToday: {
@@ -18,7 +18,7 @@ export const calendarStyles = tv({
     },
     isSelected: {
       true: {
-        day: "bg-primary text-white hover:bg-blue-600",
+        day: "bg-primary text-white hover:bg-primary-600",
       },
     },
     isCurrentMonth: {
@@ -28,6 +28,11 @@ export const calendarStyles = tv({
     isDisabled: {
       true: {
         day: "text-gray-300 cursor-not-allowed",
+      },
+    },
+    hasEvents: {
+      true: {
+        day: "", // Example styling for days with events
       },
     },
   },
@@ -43,7 +48,7 @@ export const calendarStyles = tv({
       isSelected: true,
       isCurrentMonth: true,
       class: {
-        day: "bg-primary text-white hover:bg-blue-600",
+        day: "bg-primary text-white hover:bg-primary-600",
       },
     }, {
       isSelected: false,

@@ -11,7 +11,7 @@ interface GridItemProps {
 }
 
 const gridVariants = tv({
-  base: "",
+  base: "h-full w-full",
   variants: {
     sm: {
       1: "sm:col-span-1",

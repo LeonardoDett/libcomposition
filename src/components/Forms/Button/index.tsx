@@ -50,7 +50,6 @@ export const ButtonVariants = tv({
         }
     },
     compoundVariants: [
-        // Fill + cores
         {
             variant: "fill",
             color: "primary",
@@ -170,7 +169,7 @@ export const ButtonVariants = tv({
         {
             disabled: true,
             class: "cursor-not-allowed border-gray-200 bg-gray-300 hover:bg-gray-100  text-gray-900"
-        }
+        },
     ],
     defaultVariants: {
         variant: "fill",
@@ -188,6 +187,7 @@ export function Button({
     disabled = false,
     size = "md",
     color = "primary",
+    className,
     ...rest
 }: ButtonProps) {
 
@@ -198,7 +198,9 @@ export function Button({
 
         <button
             {...rest}
-            className={ButtonVariants({ variant, loading, disabled, size, color })}>
+            aria-busy={loading}
+            disabled={disabled}
+            className={ButtonVariants({ variant, loading, disabled, size, color, className })}>
             {loading && (
                 <Icon component={LoaderCircle} size={20} className="animate-spin absolute" />
             )}

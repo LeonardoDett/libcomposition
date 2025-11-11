@@ -2,20 +2,22 @@
 @theme {
 
 --color-background: white;
+--color-background-variant: #EDECE1;
+
 --color-text-primary: var(--color-gray-700);
 --color-text-secondary: var(--color-gray-500);
 
---color-primary: var(--color-blue-500);
---color-primary-900: var(--color-blue-900);
---color-primary-800: var(--color-blue-800);
---color-primary-700: var(--color-blue-700);
---color-primary-600: var(--color-blue-600);
---color-primary-500: var(--color-blue-500);
---color-primary-400: var(--color-blue-400);
---color-primary-300: var(--color-blue-300);
---color-primary-200: var(--color-blue-200);
---color-primary-100: var(--color-blue-100);
---color-primary-50: var(--color-blue-50);
+--color-primary: #30422f;
+--color-primary-900: #162015;
+--color-primary-800: #1c291b;
+--color-primary-700: #233222;
+--color-primary-600: #2a3b29;
+--color-primary-500: #30422f;
+--color-primary-400: #3f4d3e;
+--color-primary-300: #576456;
+--color-primary-200: #808b7f;
+--color-primary-100: #b3b9b2;
+--color-primary-50: #e0e3e0;
 
 
 --color-secondary: var(--color-purple-500);

@@ -7,6 +7,7 @@ interface PopperBodyProps {
   children: ReactNode;
   width?: string;
   maxHeight?: string;
+  className?: string;
 }
 
 const PopperContentVariants = tv({
@@ -28,14 +29,14 @@ const PopperContentVariants = tv({
 export function PopperContent({
   children,
   width,
-  maxHeight
+  maxHeight,
+  className
 }: PopperBodyProps) {
 
   const {
-    events,
     refs,
     anchorData,
-    states
+    states,
   } = usePopperContext();
 
   const styles: React.CSSProperties = { width: width ?? "max-content" };
@@ -73,10 +74,10 @@ export function PopperContent({
   return (
     <>
       {
-        events.isOpen && (
+        states.isOpen && (
           <AnimatePresence>
             {
-              events.isOpen && (
+              states.isOpen && (
                 <motion.div
                   style={{ ...styles }}
                   initial={{ opacity: 0, scale: 0 }}
@@ -87,7 +88,7 @@ export function PopperContent({
                   }}
                   key="box"
                   ref={refs.setContent}
-                  className={PopperContentVariants({ orientation: states.orientation })}
+                  className={PopperContentVariants({ orientation: states.orientation, class: className })}
 
                 >
                   {children}

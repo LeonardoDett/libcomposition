@@ -1,12 +1,13 @@
-import { CalendarContext } from "./CalendarContext";
+import { CalendarContext, CalendarEvent } from "./CalendarContext";
 import { calendarStyles } from "./Calendar.styles";
 import { useCalendarGrid } from "./useCalendarGrid";
 
 type CalendarRootProps = {
   children: React.ReactNode;
   initialDate?: Date;
-  onDateSelect?: (date: Date) => void;
+  onDateSelect?: (date: Date, events: CalendarEvent[]) => void;
   selectedDate?: Date | null;
+  events?: CalendarEvent[];
 };
 
 export const CalendarRoot = ({
@@ -14,11 +15,13 @@ export const CalendarRoot = ({
   initialDate = new Date(),
   onDateSelect,
   selectedDate,
+  events,
 }: CalendarRootProps) => {
   const calendar = useCalendarGrid({
     currentDate: initialDate,
     onDateSelect,
     selectedDate,
+    events,
   });
 
   const { root } = calendarStyles();
