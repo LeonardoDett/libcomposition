@@ -1,19 +1,12 @@
 import { ReactNode } from "react";
 import { usePopperContext } from "../../Layout/Popper/PopperContext";
-import { tv } from "tailwind-variants";
+import { Menu } from "../../Layout/Menu";
 
 interface DropdownItemProps {
     children: ReactNode;
     closeOnClick?: boolean;
     onClick?: () => void;
 }
-
-const dropdownStyles = tv({
-    base: [
-        "w-full flex items-center gap-x-3 py-2 px-2.5 rounded-md text-sm text-gray-800 cursor-pointer",
-        "hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-100"
-    ]
-})
 
 
 export function DropdownItem({ children, closeOnClick, onClick }: DropdownItemProps) {
@@ -27,8 +20,8 @@ export function DropdownItem({ children, closeOnClick, onClick }: DropdownItemPr
     }
 
     return (
-        <div onClick={handleClick} className={dropdownStyles()}>
+        <Menu.Item onClick={handleClick}>
             {children}
-        </div>
+        </Menu.Item>
     );
 }

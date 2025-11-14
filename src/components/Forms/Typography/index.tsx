@@ -26,7 +26,8 @@ const typographyStyles = tv({
       success: "text-success",
       error: "text-error",
       warning: "text-warning",
-      info: "text-info"
+      info: "text-info",
+      inherit: "text-inherit"
     },
     weight: {
       thin: "font-thin",

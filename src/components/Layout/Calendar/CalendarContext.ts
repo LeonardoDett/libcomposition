@@ -4,7 +4,7 @@ import { useCalendarGrid } from "./useCalendarGrid";
 export type CalendarEvent = {
   date: Date;
   color: "red" | "green" | "blue",
-  title?: string;
+  title: string;
   description?: string;
   [key: string]: any; // Allow for additional properties
 };

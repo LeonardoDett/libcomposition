@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Popper } from "../../Layout/Popper";
+import { Menu } from "../../Layout/Menu";
 
 interface DropdownRootProps {
     children: ReactNode;
@@ -8,8 +8,8 @@ interface DropdownRootProps {
 
 export function DropdownRoot({ children }: DropdownRootProps) {
     return (
-        <Popper.Root orientation="bottom" fitAnchor>
+        <Menu.Root orientation="bottom" fitAnchor>
             {children}
-        </Popper.Root>
+        </Menu.Root>
     );
 }

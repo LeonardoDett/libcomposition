@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Popper } from "../../Layout/Popper";
+import { Menu } from "../../Layout/Menu";
 
 interface DropdownContentProps {
     children: ReactNode;
@@ -8,8 +8,8 @@ interface DropdownContentProps {
 
 export function DropdownContent({ children }: DropdownContentProps) {
     return (
-        <Popper.Content className="p-2">
+        <Menu.Content className="p-2">
             {children}
-        </Popper.Content>
+        </Menu.Content>
     );
 }

@@ -2,8 +2,11 @@ import { Bell, MessageCircleQuestion } from "lucide-react";
 import { Typography } from "../components/Forms/Typography";
 import { IconButton } from "../components/Layout/IconButton";
 import { Stack } from "../components/Layout/Stack";
-import { Dropdown } from "../components/Forms/Dropdown";
+
 import { Avatar } from "../components/Layout/Avatar";
+import { Menu } from "../components/Layout/Menu";
+import { Dropdown } from "../components/Forms/Dropdown";
+
 
 export function Navbar() {
 
@@ -21,7 +24,19 @@ export function Navbar() {
                             <IconButton className="h-full" iconSize={"20"} size="md" icon={MessageCircleQuestion} />
                         </Stack.Item>
                         <Stack.Item className="items-center content-center bg-background-variant rounded-md">
-                            <IconButton className="h-full" iconSize={"20"} size="md" icon={Bell} />
+                            <Menu.Root>
+                                <Menu.Trigger>
+                                    <IconButton className="h-full" iconSize={"20"} size="md" icon={Bell} />
+                                </Menu.Trigger>
+                                <Menu.Content>
+                                    <Menu.Item>
+                                        Notification 1
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        Notification 2
+                                    </Menu.Item>
+                                </Menu.Content>
+                            </Menu.Root>
                         </Stack.Item>
                         <Stack.Item className="items-center content-center bg-background-variant rounded-md">
                             <Dropdown.Root>
@@ -39,13 +54,13 @@ export function Navbar() {
                                 </Dropdown.Trigger>
                                 <Dropdown.Content>
                                     <Dropdown.Item>
-                                        teste
+                                        Profile
                                     </Dropdown.Item>
                                     <Dropdown.Item>
-                                        teste
+                                        Settings
                                     </Dropdown.Item>
                                     <Dropdown.Item>
-                                        teste
+                                        Logout
                                     </Dropdown.Item>
                                 </Dropdown.Content>
                             </Dropdown.Root>

@@ -8,7 +8,15 @@ export const CalendarBody = () => {
   const { body, weekDay, day } = calendarStyles();
 
   function getCalendarEventsIcon(dayInfo) {
+    let counter = 0;
+
     const ev = dayInfo?.events?.map(day => {
+      counter++;
+
+      if (counter > 3) {
+        return;
+      }
+
       let color = 'bg-sky-600'
       switch (day.color) {
         case "red":
