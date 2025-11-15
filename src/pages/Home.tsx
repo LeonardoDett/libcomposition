@@ -1,3 +1,4 @@
+import { Input } from "../components/Forms/Input";
 import { Calendar } from "../components/Layout/Calendar";
 import { CalendarEvent } from "../components/Layout/Calendar/CalendarContext";
 import { Grid } from "../components/Layout/Grid";
@@ -21,6 +22,20 @@ export function Home() {
         { date: new Date("2025-11-20"), color: "green", title: "teste", type: "CREDIT" }
     ]
 
+    const options = [
+        { value: "1", label: "teste 1" },
+        { value: "2", label: "teste 2" },
+        { value: "3", label: "teste 3" },
+        { value: "4", label: "teste 4" },
+        { value: "5", label: "teste 5" },
+        { value: "6", label: "teste 6" },
+        { value: "7", label: "teste 7" },
+        { value: "8", label: "teste 8" },
+        { value: "9", label: "teste 9" },
+        { value: "10", label: "teste 10" },
+        { value: "11", label: "teste 11" }
+    ]
+
     return (
         <div className="bg-background-variant w-screen h-full overflow-auto flex">
             <Aside />
@@ -39,7 +54,14 @@ export function Home() {
                                                 <TabsTrigger value="tab3">Tab 3</TabsTrigger>
                                             </TabsList>
                                             <TabsContent value="tab1">
-                                                <p>This is the content for Tab 1.</p>
+                                                <div className="w-1/2">
+                                                    <Input.Root>
+                                                        <Input.Box>
+                                                            <Input.Select options={options} />
+                                                        </Input.Box>
+                                                    </Input.Root>
+                                                </div>
+
                                             </TabsContent>
                                             <TabsContent value="tab2">
                                                 <p>This is the content for Tab 2.</p>
@@ -52,17 +74,17 @@ export function Home() {
                                 </Grid.Item>
                                 <Grid.Item lg={6} md={6} sm={12}>
                                     <div className="bg-white h-full rounded-sm">
-a
+                                        a
                                     </div>
                                 </Grid.Item>
                                 <Grid.Item lg={6} md={6} sm={12}>
                                     <div className="bg-white h-full rounded-sm">
-a
+                                        a
                                     </div>
                                 </Grid.Item>
                                 <Grid.Item lg={12} md={12} sm={12}>
                                     <div className="bg-white h-full rounded-sm">
-a
+                                        a
                                     </div>
                                 </Grid.Item>
 

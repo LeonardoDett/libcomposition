@@ -1,5 +1,6 @@
 import { ElementType } from "react";
-import { IconButton } from "../../components/Layout/IconButton";
+import { Button } from "../../components/Forms/Button";
+import { Icon } from "../../components/Layout/Icon";
 
 export function AsideItem({ icon, isSelected }: { icon: ElementType, isSelected: boolean }) {
 
@@ -7,13 +8,17 @@ export function AsideItem({ icon, isSelected }: { icon: ElementType, isSelected:
         if (isSelected) {
             return (
                 <div className="bg-background-variant rounded-xl">
-                    <IconButton color="primary" icon={icon} />
+                    <Button variant="text" size="icon">
+                        <Icon className="h-full" component={icon} size={20} />
+                    </Button>
                 </div>
             )
         } else {
             return (
                 <div className="">
-                    <IconButton variant="fill" color="primary" icon={icon} />
+                     <Button  size="icon">
+                        <Icon className="h-full" component={icon} size={20} />
+                    </Button>
                 </div>
             )
         }

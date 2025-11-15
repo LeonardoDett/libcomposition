@@ -1,11 +1,13 @@
 import { Bell, MessageCircleQuestion } from "lucide-react";
 import { Typography } from "../components/Forms/Typography";
-import { IconButton } from "../components/Layout/IconButton";
 import { Stack } from "../components/Layout/Stack";
 
 import { Avatar } from "../components/Layout/Avatar";
 import { Menu } from "../components/Layout/Menu";
 import { Dropdown } from "../components/Forms/Dropdown";
+import { Badge } from "../components/Layout/Badge";
+import { Button } from "../components/Forms/Button";
+import { Icon } from "../components/Layout/Icon";
 
 
 export function Navbar() {
@@ -21,12 +23,18 @@ export function Navbar() {
                 <div className="">
                     <Stack.Root direction="row" spacing="2">
                         <Stack.Item className="items-center content-center bg-background-variant rounded-md">
-                            <IconButton className="h-full" iconSize={"20"} size="md" icon={MessageCircleQuestion} />
+                            <Button variant="text" size="icon">
+                                <Icon className="h-full" component={MessageCircleQuestion} size={20} />
+                            </Button>
                         </Stack.Item>
                         <Stack.Item className="items-center content-center bg-background-variant rounded-md">
-                            <Menu.Root>
+                            <Menu.Root orientation="left">
                                 <Menu.Trigger>
-                                    <IconButton className="h-full" iconSize={"20"} size="md" icon={Bell} />
+                                    <Button variant="text" size="icon">
+                                        <Badge size="small" content={"5"} position="top-left" show={false}>
+                                            <Icon className="h-full text-inherit" component={Bell} size={20} />
+                                        </Badge>
+                                    </Button>
                                 </Menu.Trigger>
                                 <Menu.Content>
                                     <Menu.Item>

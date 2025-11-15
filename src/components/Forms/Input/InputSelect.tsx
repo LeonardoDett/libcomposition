@@ -1,8 +1,10 @@
 import { tv } from 'tailwind-variants';
 import { useInputContext } from './InputContext';
-import { Popper } from '../../Layout/Popper';
 import { Typography } from '../Typography';
 import { useState } from 'react';
+import { Menu } from '../../Layout/Menu';
+import { Icon } from '../../Layout/Icon';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export interface InputSelectProps {
     placeholder?: string
@@ -13,7 +15,7 @@ export type TOption = { value: string, label: string }
 
 
 const InputSelectVariants = tv({
-    base: 'text-md appearance-none bg-transparent border-transparent w-full outline-none',
+    base: 'text-md appearance-none bg-transparent border-transparent w-full outline-none cursor-pointer',
 });
 
 export function InputSelect({
@@ -26,7 +28,7 @@ export function InputSelect({
     const {
         states: { isFocus, isLabelFloating, isDisabled },
         refs: { inputRef, boxRef },
-        actions: { handleBlur, handleFocus }
+        actions: { handleBlur, handleFocus, handleChange }
     } = useInputContext();
 
     let placeholderText = "";
@@ -37,49 +39,50 @@ export function InputSelect({
     }
 
     function handleInputFocus() {
+        if (isDisabled) return;
         handleFocus(true);
         setIsOpen(true);
     }
 
-    function handleInputBlur() {
-        handleBlur();
+    function handleCloseMenu() {
         setIsOpen(false);
+        handleBlur();
     }
 
-    function handleSelectOption(option:TOption) {
-        if (inputRef.current) {
-            inputRef.current.value = option.label;
-        }
-
-        handleInputBlur()
+    function handleSelectOption(option: TOption) {
+        handleChange(option.label);
+        handleCloseMenu();
     }
 
     return (
-        <Popper.Root orientation='bottom' fitAnchor onClose={handleInputBlur} >
-            <Popper.TriggerVirtualized isOpen={isOpen} virtualRef={boxRef} />
-            <input
-                ref={inputRef}
-                placeholder={placeholderText}
-                onFocus={handleInputFocus}
-                type={"text"}
-                disabled={isDisabled}
-                className={InputSelectVariants()}
-            />
-            <Popper.Content maxHeight='200px' >
+        <Menu.Root fitAnchor orientation='bottom' onClose={handleCloseMenu}>
+            <Menu.TriggerVirtualized isOpen={isOpen} virtualRef={boxRef} />
+            <div className="p-1 flex gap-1 items-center content-center h-full">
+                <input
+                    ref={inputRef}
+                    placeholder={placeholderText}
+                    onFocus={handleInputFocus}
+                    type={"text"}
+                    readOnly 
+                    disabled={isDisabled}
+                    className={InputSelectVariants()}
+                    style={{ caretColor: 'transparent' }}
+                />
+                <Icon component={isOpen ? ChevronUp : ChevronDown} />
+            </div>
+            <Menu.Content className='overflow-scroll max-h-60'>
                 {
                     options.map((option, index) => {
                         return (
-                            <div key={index} onClick={() => handleSelectOption(option)}>
+                            <Menu.Item key={index} onClick={() => handleSelectOption(option)}>
                                 <Typography>
                                     {option.label}
                                 </Typography>
-                            </div>
+                            </Menu.Item>
                         )
                     })
                 }
-            </Popper.Content>
-        </Popper.Root >
-
-
+            </Menu.Content>
+        </Menu.Root >
     )
 }

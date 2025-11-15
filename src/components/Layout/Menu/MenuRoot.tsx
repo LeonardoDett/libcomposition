@@ -75,10 +75,24 @@ export function MenuRoot({
 
   const menuData = {
     states: {
+      fitAnchor,
+      orientation,
       isOpen
     },
     events: {
+      handleOpen,
       handleClose,
+      handleToggle,
+    },
+    refs: {
+      setAnchor,
+      setContent,
+      anchor,
+      content
+    },
+    anchorData: {
+      height: anchor?.getBoundingClientRect()?.height,
+      width: anchor?.getBoundingClientRect()?.width,
     }
   }
 

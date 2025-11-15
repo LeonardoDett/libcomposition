@@ -7,7 +7,7 @@ export interface InputBoxProps {
 }
 
 const inputBoxVariants = tv({
-    base: ['w-full  px-4 py-3 text-md border rounded-lg relative z-1',
+    base: ['w-full  px-3 py-2 text-md border rounded-lg relative z-1',
         'focus:outline-none',
         'focus:ring-2 ',
         'transition-all duration-300 ease-in-out'

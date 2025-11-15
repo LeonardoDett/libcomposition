@@ -1,18 +1,18 @@
 import { useEffect } from "react";
-import { usePopperContext } from "./PopperContext";
+import { useMenuContext } from "./MenuContext";
 
-interface PopperTriggerVirtualizedProps {
+interface MenuTriggerVirtualizedProps {
     isOpen?: boolean;
     virtualRef: React.RefObject<HTMLElement | null>;
 }
 
 
-export function PopperTriggerVirtualized({
+export function MenuTriggerVirtualized({
     isOpen,
     virtualRef
-}: PopperTriggerVirtualizedProps) {
+}: MenuTriggerVirtualizedProps) {
 
-    const { events, refs } = usePopperContext();
+    const { events, refs } = useMenuContext();
     useEffect(() => {
         if (isOpen) {
             events.handleOpen();

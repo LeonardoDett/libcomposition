@@ -44,6 +44,7 @@ export const ButtonVariants = tv({
             false: ""
         },
         size: {
+            icon: "p-2.5 text-sm",
             sm: "px-2.5 py-1.5 text-sm",
             md: "px-4 py-2 text-base",
             lg: "px-6 py-3 text-lg"
@@ -190,7 +191,7 @@ export function Button({
     className,
     ...rest
 }: ButtonProps) {
-
+    
     if (loading) {
         disabled = true;
     }
@@ -204,7 +205,7 @@ export function Button({
             {loading && (
                 <Icon component={LoaderCircle} size={20} className="animate-spin absolute" />
             )}
-            <span className={loading ? "invisible" : ""}>
+            <span className={`inline-flex items-center justify-center ${loading ? "invisible" : ""}`}>
                 {children}
             </span>
         </button>

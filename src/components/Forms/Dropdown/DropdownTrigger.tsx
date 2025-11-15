@@ -10,7 +10,7 @@ interface DropdownTriggerProps {
 
 
 export function DropdownTrigger({ children }: DropdownTriggerProps) {
-    const { states: { isOpen } } = usePopperContext();
+    const { states: { isOpen} } = usePopperContext();
 
     return (
         <Menu.Trigger className="h-full">
